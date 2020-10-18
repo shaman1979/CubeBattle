@@ -15,6 +15,11 @@ namespace CubeBattle.Warrior
         public WarriorMovening(Setting setting)
         {
             this.setting = setting;
+            if(setting.IsInversMove)
+            {
+                setting.Speed *= -1;
+            }
+
         }
 
         public void Tick()
@@ -31,6 +36,7 @@ namespace CubeBattle.Warrior
         public class Setting
         {
             public float Speed;
+            public bool IsInversMove;
         }
     }
 }
