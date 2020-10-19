@@ -8,10 +8,17 @@ namespace CubeBattle.Warrior.DI
         [SerializeField]
         private WarriorMovening.Setting moveSetting;
 
+        [SerializeField]
+        private WarriorBorderChecker.Setting borderSetting;
+
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<WarriorMovening>().AsSingle();
             Container.BindInstance(moveSetting);
+
+            Container.BindInterfacesAndSelfTo<WarriorBorderChecker>().AsSingle();
+            Container.BindInstance(borderSetting);
+
 
             Container.BindInstance(gameObject.transform).WithId("Warrior");
         }

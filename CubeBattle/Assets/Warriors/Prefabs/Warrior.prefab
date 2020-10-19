@@ -162,6 +162,9 @@ MonoBehaviour:
   moveSetting:
     Speed: 1
     IsInversMove: 0
+  borderSetting:
+    UpBorder: 10
+    DownBorder: -10
 --- !u!114 &7757386197041842331
 MonoBehaviour:
   m_ObjectHideFlags: 0
