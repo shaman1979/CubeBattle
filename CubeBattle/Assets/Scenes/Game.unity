@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc174cba7f8eca444928cd035a3f70c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  warrior: {fileID: 7757386197041842331, guid: 7d72a876b86c63e42a1db5eac9a2c1f0, type: 3}
 --- !u!4 &106140279
 Transform:
   m_ObjectHideFlags: 0
@@ -348,6 +349,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7757386197041842331, guid: 7d72a876b86c63e42a1db5eac9a2c1f0, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7757386197041842331, guid: 7d72a876b86c63e42a1db5eac9a2c1f0, type: 3}
     - target: {fileID: 8093667744668055204, guid: 7d72a876b86c63e42a1db5eac9a2c1f0, type: 3}
       propertyPath: m_Name
       value: Warrior (1)
@@ -737,6 +742,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7757386197041842331, guid: 7d72a876b86c63e42a1db5eac9a2c1f0, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7757386197041842331, guid: 7d72a876b86c63e42a1db5eac9a2c1f0, type: 3}
     - target: {fileID: 8093667744668055204, guid: 7d72a876b86c63e42a1db5eac9a2c1f0, type: 3}
       propertyPath: m_Name
       value: Warrior

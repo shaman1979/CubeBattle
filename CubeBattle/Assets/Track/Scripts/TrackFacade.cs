@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using Zenject;
+using CubeBattle.MessageBus;
+using CubeBattle.Messages;
 
 namespace CubeBattle.Tracks
 {
@@ -14,11 +17,16 @@ namespace CubeBattle.Tracks
         [SerializeField]
         private string trackName;
 
+        [Inject]
+        private IPublisher publisher;
+
         public Vector3 GetSpawnPosition() => spawnPoint.position;
+
+        public string GetTrackName() => trackName;
 
         private void OnMouseDown()
         {
-            Debug.Log($"Создание воина на дороге {trackName} по координате {GetSpawnPosition()}");
+            publisher.Publish(new WarriorPlaceOnTrackMessage(this));            
         }
     }
 }

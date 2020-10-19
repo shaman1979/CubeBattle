@@ -1,4 +1,5 @@
 using CubeBattle.MessageBus;
+using CubeBattle.Tracks;
 using CubeBattle.Warrior;
 using CubeBattle.Warrior.DI;
 using CubeBattle.Warrior.Factory;
@@ -17,6 +18,8 @@ public class GameInstaller : MonoInstaller
             .WithInitialSize(5)
             .FromComponentInNewPrefab(warrior)
             .UnderTransformGroup("Warriors"));
+
+        Container.BindInterfacesAndSelfTo<InstallingWarriorOnRoad>().AsSingle();
 
         Container.BindInterfacesTo<MessageBus>().AsSingle();
     }
