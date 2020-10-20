@@ -11,6 +11,9 @@ namespace CubeBattle.Warrior.DI
         [SerializeField]
         private WarriorBorderChecker.Setting borderSetting;
 
+        [SerializeField]
+        private WarriorView.Setting viewSetting;
+
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<WarriorMovening>().AsSingle();
@@ -18,6 +21,9 @@ namespace CubeBattle.Warrior.DI
 
             Container.BindInterfacesAndSelfTo<WarriorBorderChecker>().AsSingle();
             Container.BindInstance(borderSetting);
+
+            Container.Bind<WarriorView>().AsSingle();
+            Container.BindInstance(viewSetting);
 
 
             Container.BindInstance(gameObject.transform).WithId("Warrior");

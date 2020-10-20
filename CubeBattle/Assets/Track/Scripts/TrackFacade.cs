@@ -12,7 +12,10 @@ namespace CubeBattle.Tracks
     public class TrackFacade : SerializedMonoBehaviour
     {
         [SerializeField]
-        private Transform spawnPoint;
+        private Transform warriorSpawnPoint;
+
+        [SerializeField]
+        private Transform enemySpawnPoint;
 
         [SerializeField]
         private string trackName;
@@ -20,13 +23,27 @@ namespace CubeBattle.Tracks
         [Inject]
         private IPublisher publisher;
 
-        public Vector3 GetSpawnPosition() => spawnPoint.position;
+        public Vector3 GetWarriorSpawnPosition() => warriorSpawnPoint.position;
+        public Vector3 GetEnemySpawnPosition() => enemySpawnPoint.position;
 
         public string GetTrackName() => trackName;
 
         private void OnMouseDown()
         {
             publisher.Publish(new WarriorPlaceOnTrackMessage(this));            
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if(warriorSpawnPoint)
+            {
+                Gizmos.DrawSphere(GetWarriorSpawnPosition(), 0.1f);
+            }
+
+            if (enemySpawnPoint)
+            {
+                Gizmos.DrawSphere(GetEnemySpawnPosition(), 0.2f);
+            }
         }
     }
 }

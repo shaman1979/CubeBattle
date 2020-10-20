@@ -23,14 +23,20 @@ namespace CubeBattle.Tracks
         {
             subscriber.Subscriber<WarriorPlaceOnTrackMessage>(message =>
             { 
-                WarriorPlace(message.TrackFacade); });
+                WarriorPlace(message.TrackFacade, message.TrackFacade.GetWarriorSpawnPosition(), false);
+            });
+
+            subscriber.Subscriber<EnemyPlaceOnTrackMessages>(message =>
+            {
+                WarriorPlace(message.TrackFacade, message.TrackFacade.GetEnemySpawnPosition(), true);
+            });
         }
 
-        private void WarriorPlace(TrackFacade trackFacade)
+        private void WarriorPlace(TrackFacade trackFacade, Vector3 spawnPoint, bool isEnemy)
         {
-            var warrior = warriorFactory.Create();
+            var warrior = warriorFactory.Create(isEnemy);
 
-            warrior.transform.position = trackFacade.GetSpawnPosition();
+            warrior.transform.position = spawnPoint;
 
             Debug.Log($"Создание воина на дороге {trackFacade.GetTrackName()}.");
         }

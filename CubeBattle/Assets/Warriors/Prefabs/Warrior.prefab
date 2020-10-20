@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5753306299783866504}
   - component: {fileID: 3734916394454840709}
   - component: {fileID: 7829917709607806873}
+  - component: {fileID: 4231867833073499548}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a33f2156469adbc41b1f4fec2f8f9915, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,6 +96,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4231867833073499548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4896805867696191618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 3734916394454840709}
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 2651749702417522613}
+  _bindType: 0
 --- !u!1 &8093667744668055204
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,10 +180,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSetting:
     Speed: 1
-    IsInversMove: 0
   borderSetting:
     UpBorder: 10
     DownBorder: -10
+  viewSetting:
+    warriorColor: {r: 0, g: 1, b: 0.09699106, a: 1}
+    enemyColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &7757386197041842331
 MonoBehaviour:
   m_ObjectHideFlags: 0
