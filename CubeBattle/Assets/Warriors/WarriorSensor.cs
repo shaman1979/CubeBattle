@@ -1,18 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 namespace CubeBattle.Warrior
 {
-    public class WarriorPush : IFixedTickable
+    public class WarriorSensor : IFixedTickable
     {
         private readonly Transform origin;
         private readonly Setting setting;
 
         private Vector3 direction;
 
-        public WarriorPush([Inject(Id = "Warrior")] Transform origin, Setting setting)
+        public Action DiscoveredEnemy;
+        public Action DiscoveresWarrior;
+
+        public WarriorSensor([Inject(Id = "Warrior")] Transform origin, Setting setting)
         {
             this.origin = origin;
             this.setting = setting;
@@ -30,11 +34,11 @@ namespace CubeBattle.Warrior
                 {
                     if (warrior.IsEnemy())
                     {
-                        Debug.Log($"Найден враг");
+                        DiscoveredEnemy?.Invoke();
                     }
                     else
                     {
-                        Debug.Log($"Найден воин");
+                        DiscoveresWarrior?.Invoke();
                     }
                 }
             }

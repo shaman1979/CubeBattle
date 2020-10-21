@@ -18,7 +18,7 @@ namespace CubeBattle.Warrior
         private WarriorView warriorView;
 
         [Inject]
-        private WarriorPush warriorPush;
+        private WarriorSensor warriorPush;
 
         private IMemoryPool pool;
 

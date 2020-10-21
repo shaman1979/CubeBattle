@@ -186,6 +186,8 @@ MonoBehaviour:
   viewSetting:
     warriorColor: {r: 0, g: 1, b: 0.09699106, a: 1}
     enemyColor: {r: 1, g: 0, b: 0, a: 1}
+  sensorSetting:
+    Distance: 0.5
 --- !u!114 &7757386197041842331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
