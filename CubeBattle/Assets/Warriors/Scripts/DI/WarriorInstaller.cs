@@ -14,6 +14,9 @@ namespace CubeBattle.Warrior.DI
         [SerializeField]
         private WarriorView.Setting viewSetting;
 
+        [SerializeField]
+        private WarriorPush.Setting pushSetting;
+
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<WarriorMovening>().AsSingle();
@@ -25,6 +28,8 @@ namespace CubeBattle.Warrior.DI
             Container.Bind<WarriorView>().AsSingle();
             Container.BindInstance(viewSetting);
 
+            Container.BindInterfacesAndSelfTo<WarriorPush>().AsSingle();
+            Container.BindInstance(pushSetting);
 
             Container.BindInstance(gameObject.transform).WithId("Warrior");
         }

@@ -17,7 +17,12 @@ namespace CubeBattle.Warrior
         [Inject]
         private WarriorView warriorView;
 
+        [Inject]
+        private WarriorPush warriorPush;
+
         private IMemoryPool pool;
+
+        private bool isEnemy;
 
         private void Awake()
         {
@@ -29,9 +34,13 @@ namespace CubeBattle.Warrior
             pool = null;
         }
 
+        public bool IsEnemy() => isEnemy;
+
         public void OnSpawned(bool isEnemy, IMemoryPool memoryPool)
         {
             pool = memoryPool;
+
+            this.isEnemy = isEnemy;
 
             if (isEnemy)
             {
@@ -47,12 +56,14 @@ namespace CubeBattle.Warrior
         {
             warriorMovening.InversMovening(false);
             warriorView.ChangeWarriorColor();
+            warriorPush.Init(Vector3.forward);
         }
 
         private void EnemySetting()
         {
             warriorMovening.InversMovening(true);
             warriorView.ChangeEnemyColor();
+            warriorPush.Init(-Vector3.forward);
         }
 
         private void Destroy()
