@@ -13,8 +13,8 @@ namespace CubeBattle.Warrior
 
         private Vector3 direction;
 
-        public Action DiscoveredEnemy;
-        public Action DiscoveresWarrior;
+        public Action<WarriorFacade> DiscoveredEnemy;
+        public Action<WarriorFacade> DiscoveresWarrior;
 
         public WarriorSensor([Inject(Id = "Warrior")] Transform origin, Setting setting)
         {
@@ -34,11 +34,11 @@ namespace CubeBattle.Warrior
                 {
                     if (warrior.IsEnemy())
                     {
-                        DiscoveredEnemy?.Invoke();
+                        DiscoveredEnemy?.Invoke(warrior);
                     }
                     else
                     {
-                        DiscoveresWarrior?.Invoke();
+                        DiscoveresWarrior?.Invoke(warrior);
                     }
                 }
             }

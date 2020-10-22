@@ -18,7 +18,10 @@ namespace CubeBattle.Warrior
         private WarriorView warriorView;
 
         [Inject]
-        private WarriorSensor warriorPush;
+        private WarriorSensor warriorSensor;
+
+        //[Inject]
+        //private WarriorPush warriorPush;
 
         private IMemoryPool pool;
 
@@ -52,18 +55,25 @@ namespace CubeBattle.Warrior
             }
         }
 
+        public void ApplicationForse(float forse)
+        {
+
+        }
+
         private void WarriorSetting()
         {
-            warriorMovening.InversMovening(false);
+            warriorMovening.InversMovening(isEnemy);
             warriorView.ChangeWarriorColor();
-            warriorPush.Init(Vector3.forward);
+            warriorSensor.Init(Vector3.forward);
+            //warriorPush.ChangeWarrior(isEnemy);
         }
 
         private void EnemySetting()
         {
             warriorMovening.InversMovening(true);
             warriorView.ChangeEnemyColor();
-            warriorPush.Init(-Vector3.forward);
+            warriorSensor.Init(-Vector3.forward);
+            //warriorPush.ChangeWarrior(isEnemy);
         }
 
         private void Destroy()

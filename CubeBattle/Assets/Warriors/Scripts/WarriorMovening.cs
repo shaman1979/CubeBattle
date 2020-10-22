@@ -12,6 +12,8 @@ namespace CubeBattle.Warrior
 
         private readonly Setting setting;
 
+        private float speedBoost = 0;
+
         public WarriorMovening(Setting setting)
         {
             this.setting = setting;
@@ -27,9 +29,14 @@ namespace CubeBattle.Warrior
             setting.Speed = isInvers ? -Mathf.Abs(setting.Speed) : Mathf.Abs(setting.Speed);
         }
 
+        public void ChangeSpeed(float newSpeed)
+        {
+            speedBoost = newSpeed;
+        }
+
         private void Movening()
         {
-            warrior.Translate(0, 0, setting.Speed * Time.deltaTime);
+            warrior.Translate(0, 0, (setting.Speed + speedBoost) * Time.deltaTime);
         }
 
         [System.Serializable]
