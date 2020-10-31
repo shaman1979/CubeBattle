@@ -6,9 +6,6 @@ using Zenject;
 public class EnemyInstaller : MonoInstaller
 {
     [SerializeField]
-    private UnitBorderChecker.Setting borderSetting;
-
-    [SerializeField]
     private EnemyMovening.Setting moveSetting;
 
     [SerializeField]
@@ -27,6 +24,5 @@ public class EnemyInstaller : MonoInstaller
         Container.BindInstance(gameObject.transform).WithId("Unit");
 
         Container.BindInterfacesAndSelfTo<UnitBorderChecker>().AsSingle();
-        Container.BindInstance(borderSetting);
     }
 }

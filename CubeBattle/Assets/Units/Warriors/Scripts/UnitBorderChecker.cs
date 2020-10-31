@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CubeBattle.Cameras.Extension;
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -9,27 +10,18 @@ namespace CubeBattle.Units
         public Action WentToBorder;
 
         private readonly Transform warrior;
-        private readonly Setting setting;
 
-        public UnitBorderChecker([Inject(Id = "Unit")]Transform warrior, Setting setting)
+        public UnitBorderChecker([Inject(Id = "Unit")]Transform warrior)
         {
             this.warrior = warrior;
-            this.setting = setting;
         }
 
         public void FixedTick()
         {
-            if(warrior.position.z > setting.UpBorder || warrior.position.z < setting.DownBorder)
+            if(warrior.position.z > CameraExtensions.GetUpBorder() || warrior.position.z < CameraExtensions.GetDownBorder())
             {
                 WentToBorder?.Invoke();
             }
-        }
-
-        [System.Serializable]
-        public class Setting
-        {
-            public float UpBorder;
-            public float DownBorder;
         }
     }
 }

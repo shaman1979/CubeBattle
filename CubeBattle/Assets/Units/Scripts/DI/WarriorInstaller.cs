@@ -10,15 +10,10 @@ namespace CubeBattle.Units.DI
     public class WarriorInstaller : MonoInstaller
     {
         [SerializeField]
-        private UnitBorderChecker.Setting borderSetting;
-
-        #region WarriorSettings
-        [SerializeField, BoxGroup("Warrior")]
         private WarriorMovening.Setting moveSetting;
 
-        [SerializeField, BoxGroup("Warrior")]
+        [SerializeField]
         private WarriorSensor.Setting sensorSetting;
-        #endregion
 
         public override void InstallBindings()
         {
@@ -33,7 +28,6 @@ namespace CubeBattle.Units.DI
             Container.BindInstance(gameObject.transform).WithId("Unit");
 
             Container.BindInterfacesAndSelfTo<UnitBorderChecker>().AsSingle();
-            Container.BindInstance(borderSetting);
         } 
     }
 }
