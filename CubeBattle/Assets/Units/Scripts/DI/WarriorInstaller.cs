@@ -15,6 +15,9 @@ namespace CubeBattle.Units.DI
         [SerializeField]
         private WarriorSensor.Setting sensorSetting;
 
+        [SerializeField]
+        private WarriorPush.Setting pushSetting;
+
         public override void InstallBindings()
         {
             Container.BindInterfacesTo<WarriorMovening>().AsSingle();
@@ -24,6 +27,9 @@ namespace CubeBattle.Units.DI
 
             Container.BindInterfacesTo<WarriorSensor>().AsSingle();
             Container.BindInstance(sensorSetting);
+
+            Container.BindInterfacesTo<WarriorPush>().AsSingle();
+            Container.BindInstance(pushSetting);
 
             Container.BindInstance(gameObject.transform).WithId("Unit");
 

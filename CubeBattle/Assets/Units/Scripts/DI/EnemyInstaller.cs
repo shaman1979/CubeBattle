@@ -11,6 +11,9 @@ public class EnemyInstaller : MonoInstaller
     [SerializeField]
     private EnemySensor.Setting sensorSetting;
 
+    [SerializeField]
+    private EnemyPush.Setting pushSetting;
+
     public override void InstallBindings()
     {
         Container.BindInterfacesTo<EnemyMovening>().AsSingle();
@@ -20,6 +23,9 @@ public class EnemyInstaller : MonoInstaller
 
         Container.BindInterfacesTo<EnemySensor>().AsSingle();
         Container.BindInstance(sensorSetting);
+
+        Container.BindInterfacesTo<EnemyPush>().AsSingle();
+        Container.BindInstance(pushSetting);
 
         Container.BindInstance(gameObject.transform).WithId("Unit");
 

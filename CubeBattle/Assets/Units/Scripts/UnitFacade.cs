@@ -18,6 +18,9 @@ namespace CubeBattle.Units
         [Inject]
         protected IUnitView view;
 
+        [Inject]
+        protected IUnitPushing pushing;
+
         protected IMemoryPool pool;
 
         protected void Destroy()
@@ -28,6 +31,9 @@ namespace CubeBattle.Units
         private void Awake()
         {
             borderChecker.WentToBorder += Destroy;
+
+            unitSensor.DiscoveresWarrior += pushing.WarriorPushing;
+            unitSensor.DiscoveredEnemy += pushing.EnemyPushing;
         }
 
         private void OnCollisionEnter(Collision collision)
