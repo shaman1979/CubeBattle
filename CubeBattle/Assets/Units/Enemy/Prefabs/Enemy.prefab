@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1804779507513525926}
+  - component: {fileID: 7703805150113921286}
   - component: {fileID: 5590461128588029883}
-  - component: {fileID: 3606963671978181665}
   - component: {fileID: 9000417117638738585}
+  - component: {fileID: 2839974083764016166}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -34,6 +35,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7703805150113921286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804779507513525930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765ebab9083f46a4d96502079ee73632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  borderSetting:
+    UpBorder: 10
+    DownBorder: -10
+  moveSetting:
+    Speed: 1
+  sensorSetting:
+    Distance: 0.5
+    Direction: {x: 0, y: 0, z: -1}
 --- !u!114 &5590461128588029883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48,35 +69,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 3606963671978181665}
+  - {fileID: 7703805150113921286}
   _installerPrefabs: []
   _autoRun: 1
   _kernel: {fileID: 0}
---- !u!114 &3606963671978181665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804779507513525930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a30ff56f2b7e994ca64ca28feb0a39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  borderSetting:
-    UpBorder: 10
-    DownBorder: -10
-  moveSetting:
-    Speed: 1
-  sensorSetting:
-    Distance: 1
-    Direction: {x: 0, y: 0, z: 0}
-  enemyMoveSetting:
-    Speed: 1
-  enemySensorSetting:
-    Distance: 0
-    Direction: {x: 0, y: 0, z: 0}
 --- !u!114 &9000417117638738585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +94,19 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+--- !u!65 &2839974083764016166
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804779507513525930}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3075206990236092556
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +118,6 @@ GameObject:
   - component: {fileID: 963211449618320656}
   - component: {fileID: 2778297727021488262}
   - component: {fileID: 6524783633054893451}
-  - component: {fileID: 428073020761888663}
   - component: {fileID: 3642809327013408271}
   m_Layer: 0
   m_Name: Model
@@ -181,19 +189,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &428073020761888663
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3075206990236092556}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3642809327013408271
 MonoBehaviour:
   m_ObjectHideFlags: 0

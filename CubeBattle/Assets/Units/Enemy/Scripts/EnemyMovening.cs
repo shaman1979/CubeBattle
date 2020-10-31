@@ -30,7 +30,7 @@ namespace CubeBattle.Units.Enemy
 
         private void Movening()
         {
-            warrior.Translate(0, 0, (setting.Speed + speedBoost) * Time.deltaTime);
+            warrior.Translate(0, 0, -(setting.Speed + speedBoost) * Time.deltaTime);
         }
 
         [System.Serializable]
