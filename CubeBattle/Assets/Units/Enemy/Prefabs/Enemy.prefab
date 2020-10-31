@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1804779507513525926}
   - component: {fileID: 5590461128588029883}
   - component: {fileID: 3606963671978181665}
-  - component: {fileID: 4584628036547704546}
+  - component: {fileID: 9000417117638738585}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -64,13 +64,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a30ff56f2b7e994ca64ca28feb0a39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSetting:
-    Speed: 1
-    IsInversMove: 1
   borderSetting:
     UpBorder: 10
     DownBorder: -10
---- !u!114 &4584628036547704546
+  moveSetting:
+    Speed: 1
+  sensorSetting:
+    Distance: 1
+    Direction: {x: 0, y: 0, z: 0}
+  enemyMoveSetting:
+    Speed: 1
+  enemySensorSetting:
+    Distance: 0
+    Direction: {x: 0, y: 0, z: 0}
+--- !u!114 &9000417117638738585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,7 +86,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1804779507513525930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08f03b08ee5c1a54b838dcd42e2c2329, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ffb5d6b83957134784ad5d486519dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -103,6 +110,7 @@ GameObject:
   - component: {fileID: 2778297727021488262}
   - component: {fileID: 6524783633054893451}
   - component: {fileID: 428073020761888663}
+  - component: {fileID: 3642809327013408271}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -186,3 +194,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3642809327013408271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3075206990236092556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 6524783633054893451}
+  _identifier: 
+  _useSceneContext: 0
+  _context: {fileID: 0}
+  _bindType: 0

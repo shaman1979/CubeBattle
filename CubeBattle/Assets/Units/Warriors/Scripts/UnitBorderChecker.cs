@@ -2,16 +2,16 @@
 using UnityEngine;
 using Zenject;
 
-namespace CubeBattle.Warrior
+namespace CubeBattle.Units
 {
-    public class WarriorBorderChecker : IFixedTickable
+    public class UnitBorderChecker : IFixedTickable
     {
         public Action WentToBorder;
 
         private readonly Transform warrior;
         private readonly Setting setting;
 
-        public WarriorBorderChecker([Inject(Id = "Warrior")]Transform warrior, Setting setting)
+        public UnitBorderChecker([Inject(Id = "Unit")]Transform warrior, Setting setting)
         {
             this.warrior = warrior;
             this.setting = setting;

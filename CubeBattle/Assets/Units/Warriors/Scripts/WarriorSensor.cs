@@ -1,22 +1,22 @@
-﻿using System;
+﻿using CubeBattle.Units.Enemy;
+using CubeBattle.Units.Warrior;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace CubeBattle.Warrior
+namespace CubeBattle.Units.Warrior
 {
-    public class WarriorSensor : IFixedTickable
+    public class WarriorSensor : IFixedTickable, IUnitSensor
     {
         private readonly Transform origin;
         private readonly Setting setting;
 
-        private Vector3 direction;
+        public Action<EnemyFacade> DiscoveredEnemy { get; set; }
+        public Action<WarriorFacade> DiscoveresWarrior { get; set; }
 
-        public Action<WarriorFacade> DiscoveredEnemy;
-        public Action<WarriorFacade> DiscoveresWarrior;
-
-        public WarriorSensor([Inject(Id = "Warrior")] Transform origin, Setting setting)
+        public WarriorSensor([Inject(Id = "Unit")] Transform origin, Setting setting)
         {
             this.origin = origin;
             this.setting = setting;
@@ -28,30 +28,25 @@ namespace CubeBattle.Warrior
 
             if (RayHitChecker(out hit))
             {
-                var warrior = hit.transform.GetComponentInParent<WarriorFacade>();
+                var warrior = hit.transform.GetComponentInParent<UnitFacade>();
 
                 if (warrior)
                 {
-                    if (warrior.IsEnemy())
+                    if (warrior is WarriorFacade)
                     {
-                        DiscoveredEnemy?.Invoke(warrior);
+                        DiscoveresWarrior?.Invoke(warrior as WarriorFacade);
                     }
-                    else
+                    else if(warrior is EnemyFacade)
                     {
-                        DiscoveresWarrior?.Invoke(warrior);
+                        DiscoveredEnemy?.Invoke(warrior as EnemyFacade);
                     }
                 }
             }
         }
 
-        public void Init(Vector3 direction)
-        {
-            this.direction = direction;
-        }
-
         private bool RayHitChecker(out RaycastHit hit)
         {
-            var ray = new Ray(origin.position, direction);
+            var ray = new Ray(origin.position, setting.Direction);
 
             Debug.DrawRay(ray.origin, ray.direction, Color.white);
 
@@ -62,6 +57,7 @@ namespace CubeBattle.Warrior
         public class Setting
         {
             public float Distance;
+            public Vector3 Direction;
         }
     }
 }

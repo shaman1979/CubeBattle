@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace CubeBattle.Enemy
+namespace CubeBattle.Spawners
 {
     public class EnemySpawn : ITickable
     {

@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   warrior: {fileID: 7757386197041842331, guid: 7d72a876b86c63e42a1db5eac9a2c1f0, type: 3}
+  enemy: {fileID: 9000417117638738585, guid: 3068e971fa72722408beeaaa9be95c96, type: 3}
 --- !u!4 &106140279
 Transform:
   m_ObjectHideFlags: 0

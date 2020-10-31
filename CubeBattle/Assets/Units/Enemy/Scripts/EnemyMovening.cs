@@ -3,30 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-namespace CubeBattle.Warrior
+namespace CubeBattle.Units.Enemy
 {
-    public class WarriorMovening : ITickable
+    public class EnemyMovening : ITickable, IUnitMovening
     {
-        [Inject(Id = "Warrior")]
-        private Transform warrior;
-
+        private readonly Transform warrior;
         private readonly Setting setting;
 
         private float speedBoost = 0;
 
-        public WarriorMovening(Setting setting)
+        public EnemyMovening([Inject(Id = "Unit")] Transform warrior, Setting setting)
         {
+            this.warrior = warrior;
             this.setting = setting;
         }
 
         public void Tick()
         {
             Movening();
-        }
-
-        public void InversMovening(bool isInvers)
-        {
-            setting.Speed = isInvers ? -Mathf.Abs(setting.Speed) : Mathf.Abs(setting.Speed);
         }
 
         public void ChangeSpeed(float newSpeed)
