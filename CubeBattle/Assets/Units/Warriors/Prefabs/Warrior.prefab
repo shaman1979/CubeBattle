@@ -165,14 +165,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a30ff56f2b7e994ca64ca28feb0a39f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  borderSetting:
-    UpBorder: 10
-    DownBorder: -10
   moveSetting:
     Speed: 1
   sensorSetting:
     Distance: 0.5
-    Direction: {x: 0, y: 0, z: -1}
+    Direction: {x: 0, y: 0, z: 1}
 --- !u!114 &7757386197041842331
 MonoBehaviour:
   m_ObjectHideFlags: 0

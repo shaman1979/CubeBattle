@@ -12,10 +12,12 @@ namespace CubeBattle.Units.Warrior
 
         private float speedBoost = 0;
 
-        public WarriorMovening([Inject(Id = "Unit")] Transform warrior, Setting setting)
+        public WarriorMovening([Inject(Id = "Unit")] Transform warrior, Setting setting, IUnitSensor warriorSensor)
         {
             this.warrior = warrior;
             this.setting = setting;
+
+            warriorSensor.DiscoveredEnemy += (enemy) => speedBoost = -setting.Speed;
         }
 
         public void Tick()

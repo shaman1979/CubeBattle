@@ -32,10 +32,13 @@ namespace CubeBattle.Units.Enemy
                     if (warrior is WarriorFacade)
                     {
                         DiscoveresWarrior?.Invoke(warrior as WarriorFacade);
+                        Debug.Log($"Обнаружен воин враг.");
                     }
                     else if (warrior is EnemyFacade)
                     {
                         DiscoveredEnemy?.Invoke(warrior as EnemyFacade);
+                        Debug.Log($"Обнаружен Враг союзник.");
+
                     }
                 }
             }

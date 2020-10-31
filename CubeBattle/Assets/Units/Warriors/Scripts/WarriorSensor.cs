@@ -28,17 +28,19 @@ namespace CubeBattle.Units.Warrior
 
             if (RayHitChecker(out hit))
             {
-                var warrior = hit.transform.GetComponentInParent<UnitFacade>();
+                var unit = hit.transform.GetComponentInParent<UnitFacade>();
 
-                if (warrior)
+                if (unit)
                 {
-                    if (warrior is WarriorFacade)
+                    if (unit is WarriorFacade)
                     {
-                        DiscoveresWarrior?.Invoke(warrior as WarriorFacade);
+                        DiscoveresWarrior?.Invoke(unit as WarriorFacade);
+                        Debug.Log($"Обнаружен воин союзник.");
                     }
-                    else if(warrior is EnemyFacade)
+                    else if(unit is EnemyFacade)
                     {
-                        DiscoveredEnemy?.Invoke(warrior as EnemyFacade);
+                        DiscoveredEnemy?.Invoke(unit as EnemyFacade);
+                        Debug.Log($"Обнаружен враг враг.");
                     }
                 }
             }

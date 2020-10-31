@@ -7,15 +7,17 @@ namespace CubeBattle.Units.Enemy
 {
     public class EnemyMovening : ITickable, IUnitMovening
     {
-        private readonly Transform warrior;
+        private readonly Transform enemy;
         private readonly Setting setting;
 
         private float speedBoost = 0;
 
-        public EnemyMovening([Inject(Id = "Unit")] Transform warrior, Setting setting)
+        public EnemyMovening([Inject(Id = "Unit")] Transform enemy, Setting setting, IUnitSensor enemySensor)
         {
-            this.warrior = warrior;
+            this.enemy = enemy;
             this.setting = setting;
+
+            enemySensor.DiscoveresWarrior += (unit) => speedBoost = -setting.Speed;
         }
 
         public void Tick()
@@ -30,7 +32,7 @@ namespace CubeBattle.Units.Enemy
 
         private void Movening()
         {
-            warrior.Translate(0, 0, -(setting.Speed + speedBoost) * Time.deltaTime);
+            enemy.Translate(0, 0, -(setting.Speed + speedBoost) * Time.deltaTime);
         }
 
         [System.Serializable]
