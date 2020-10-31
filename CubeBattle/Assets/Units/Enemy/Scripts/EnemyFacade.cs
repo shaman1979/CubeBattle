@@ -1,29 +1,9 @@
-﻿using CubeBattle.Units.Warrior;
-using Zenject;
+﻿using Zenject;
 
 namespace CubeBattle.Units.Enemy
 {
     public class EnemyFacade : UnitFacade, IPoolable<IMemoryPool>
     {
-        [Inject]
-        private UnitBorderChecker borderChecker;
-
-        [Inject]
-        private IUnitMovening enemyMovening;
-
-        [Inject]
-        private IUnitView enemyView;
-
-        [Inject]
-        private IUnitSensor enemySensor;
-
-        private IMemoryPool pool;
-
-        private void Awake()
-        {
-            borderChecker.WentToBorder += Destroy;
-        }
-
         public void OnDespawned()
         {
             pool = null;
@@ -33,9 +13,10 @@ namespace CubeBattle.Units.Enemy
         {
             pool = memoryPool;
         }
-        private void Destroy()
+
+        public override void ApplicationForse(float forse)
         {
-            pool.Despawn(this);
+            movening.ChangeSpeed(forse);
         }
     }
 }

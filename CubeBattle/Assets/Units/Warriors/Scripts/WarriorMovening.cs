@@ -27,7 +27,8 @@ namespace CubeBattle.Units.Warrior
 
         public void ChangeSpeed(float newSpeed)
         {
-            speedBoost = newSpeed;
+            speedBoost += newSpeed;
+            speedBoost = Mathf.Clamp(speedBoost, speedBoost, 0);
         }
 
         private void Movening()

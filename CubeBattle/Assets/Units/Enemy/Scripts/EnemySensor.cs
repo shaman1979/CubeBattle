@@ -5,7 +5,7 @@ using Zenject;
 
 namespace CubeBattle.Units.Enemy
 {
-    public class EnemySensor : IFixedTickable, IUnitSensor
+    public class EnemySensor : IUnitSensor
     {
         private readonly Transform origin;
         private readonly Setting setting;
@@ -19,7 +19,7 @@ namespace CubeBattle.Units.Enemy
             this.setting = setting;
         }
 
-        public void FixedTick()
+        public void Scaning()
         {
             RaycastHit hit;
 

@@ -8,7 +8,7 @@ using Zenject;
 
 namespace CubeBattle.Units.Warrior
 {
-    public class WarriorSensor : IFixedTickable, IUnitSensor
+    public class WarriorSensor : IUnitSensor
     {
         private readonly Transform origin;
         private readonly Setting setting;
@@ -22,7 +22,7 @@ namespace CubeBattle.Units.Warrior
             this.setting = setting;
         }
 
-        public void FixedTick()
+        public void Scaning()
         {
             RaycastHit hit;
 

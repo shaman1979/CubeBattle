@@ -11,5 +11,7 @@ namespace CubeBattle.Units
     {
         Action<EnemyFacade> DiscoveredEnemy { get; set; }
         Action<WarriorFacade> DiscoveresWarrior { get; set; }
+
+        void Scaning();
     }
 }
