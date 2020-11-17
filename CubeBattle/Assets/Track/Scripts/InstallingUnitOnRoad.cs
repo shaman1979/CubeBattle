@@ -1,5 +1,6 @@
 ﻿using CubeBattle.MessageBus;
 using CubeBattle.Messages;
+using CubeBattle.Units;
 using CubeBattle.Units.Factory;
 using UnityEngine;
 using Zenject;
@@ -32,7 +33,7 @@ namespace CubeBattle.Tracks
             });
         }
 
-        private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<T>  factory) where T : MonoBehaviour
+        private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<T>  factory) where T : UnitFacade
         {
             var unit = factory.Create();
 

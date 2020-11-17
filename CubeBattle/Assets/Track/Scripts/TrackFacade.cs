@@ -33,17 +33,25 @@ namespace CubeBattle.Tracks
             publisher.Publish(new WarriorPlaceOnTrackMessage(this));            
         }
 
-        private void OnDrawGizmosSelected()
+        private void OnDrawGizmos()
         {
             if(warriorSpawnPoint)
             {
-                Gizmos.DrawSphere(GetWarriorSpawnPosition(), 0.1f);
+                DrawStartPoint(GetWarriorSpawnPosition(), Color.green);
+
             }
 
             if (enemySpawnPoint)
             {
-                Gizmos.DrawSphere(GetEnemySpawnPosition(), 0.2f);
+                DrawStartPoint(GetEnemySpawnPosition(), Color.red);
             }
+        }
+
+        private void DrawStartPoint(Vector3 position, Color color)
+        {
+            Gizmos.color = color;
+            Gizmos.DrawSphere(position, 0.2f);
+            Gizmos.color = Color.white;
         }
     }
 }

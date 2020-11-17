@@ -1,4 +1,7 @@
-﻿using Sirenix.OdinInspector;
+﻿using CubeBattle.Tracks;
+using Sirenix.OdinInspector;
+using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -23,6 +26,30 @@ namespace CubeBattle.Units
 
         protected IMemoryPool pool;
 
+        protected CollisionGroup collisionGroup;
+
+        public CollisionGroup GetCollisionGroup()
+        {
+            if(collisionGroup == null)
+            {
+                collisionGroup = new CollisionGroup();
+                collisionGroup.AddUnit(this);
+            }
+
+            return collisionGroup;
+        }
+
+        public void SetCollisionGroup(CollisionGroup collisionGroup)
+        {
+            this.collisionGroup = collisionGroup;
+        }
+
+        public void Scaning()
+        {
+            unitSensor.Scaning();
+            movening.Stop();
+        }
+
         protected void Destroy()
         {
             pool.Despawn(this);
@@ -38,7 +65,15 @@ namespace CubeBattle.Units
 
         private void OnCollisionEnter(Collision collision)
         {
-            unitSensor.Scaning();
+            Scaning();
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (Application.isPlaying)
+            {
+                Handles.Label(transform.position, pushing.GetForge().ToString());
+            }
         }
 
         public abstract void ApplicationForse(float forse);

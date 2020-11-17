@@ -51,7 +51,7 @@ MonoBehaviour:
   moveSetting:
     Speed: 1
   sensorSetting:
-    Distance: 0.5
+    Distance: 0.7
     Direction: {x: 0, y: 0, z: -1}
   pushSetting:
     PushingForse: 1
@@ -121,7 +121,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 118
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &3075206990236092556
 GameObject:

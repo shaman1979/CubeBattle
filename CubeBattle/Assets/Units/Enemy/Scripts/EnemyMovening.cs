@@ -11,6 +11,7 @@ namespace CubeBattle.Units.Enemy
         private readonly Setting setting;
 
         private float speedBoost = 0;
+        private bool isPlaying = true;
 
         public EnemyMovening([Inject(Id = "Unit")] Transform enemy, Setting setting)
         {
@@ -26,11 +27,23 @@ namespace CubeBattle.Units.Enemy
         public void ChangeSpeed(float newSpeed)
         {
             speedBoost = newSpeed;
+            speedBoost = Mathf.Clamp(speedBoost, speedBoost, 0);
+        }
+
+        public void Stop()
+        {
+            isPlaying = false;
+        }
+
+        public void Start()
+        {
+            isPlaying = true;
         }
 
         private void Movening()
         {
-            enemy.Translate(0, 0, -(setting.Speed + speedBoost) * Time.deltaTime);
+            if(isPlaying)
+                enemy.Translate(0, 0, -(setting.Speed + speedBoost) * Time.deltaTime);
         }
 
         [System.Serializable]

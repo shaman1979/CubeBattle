@@ -17,6 +17,9 @@ namespace CubeBattle.Units.Enemy
         public override void ApplicationForse(float forse)
         {
             movening.ChangeSpeed(forse);
+
+            if (forse >= 0)
+                pushing.ApplicationPushBoost(forse);
         }
     }
 }

@@ -8,7 +8,7 @@ using Zenject;
 
 namespace CubeBattle.Units.Warrior
 {
-    public class WarriorSensor : IUnitSensor
+    public class WarriorSensor : IUnitSensor, ITickable
     {
         private readonly Transform origin;
         private readonly Setting setting;
@@ -49,10 +49,15 @@ namespace CubeBattle.Units.Warrior
         private bool RayHitChecker(out RaycastHit hit)
         {
             var ray = new Ray(origin.position, setting.Direction);
-
             Debug.DrawRay(ray.origin, ray.direction, Color.white);
 
             return Physics.Raycast(ray, out hit, setting.Distance);
+        }
+
+        public void Tick()
+        {
+            var ray = new Ray(origin.position, setting.Direction);
+            Debug.DrawRay(ray.origin, ray.direction, Color.white);
         }
 
         [System.Serializable]

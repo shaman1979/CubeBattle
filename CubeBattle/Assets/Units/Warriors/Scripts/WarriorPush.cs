@@ -1,4 +1,5 @@
-﻿using CubeBattle.Units.Enemy;
+﻿using CubeBattle.Tracks;
+using CubeBattle.Units.Enemy;
 
 namespace CubeBattle.Units.Warrior
 {
@@ -6,19 +7,34 @@ namespace CubeBattle.Units.Warrior
     {
         private readonly Setting setting;
 
+        private float pushBoost;
+
+        private WarriorFacade unitFacade;
+
         public WarriorPush(Setting setting)
         {
             this.setting = setting;
         }
 
-        public void EnemyPushing(EnemyFacade enemyFacade)
+        public void ApplicationPushBoost(float value)
         {
-            enemyFacade.ApplicationForse(-setting.PushingForce);
+            pushBoost = value;
+        }
+
+        public void EnemyPushing(EnemyFacade enemy)
+        {
+            //var collisionGroup = enemy.GetCollisionGroup();
+            enemy.ApplicationForse(-(setting.PushingForce + pushBoost));
+        }
+
+        public float GetForge()
+        {
+            return setting.PushingForce + pushBoost;
         }
 
         public void WarriorPushing(WarriorFacade warrior)
         {
-            warrior.ApplicationForse(setting.PushingForce);
+            warrior.ApplicationForse(setting.PushingForce + pushBoost);
         }
 
         [System.Serializable]

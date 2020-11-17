@@ -5,7 +5,7 @@ using Zenject;
 
 namespace CubeBattle.Units.Enemy
 {
-    public class EnemySensor : IUnitSensor
+    public class EnemySensor : IUnitSensor, ITickable
     {
         private readonly Transform origin;
         private readonly Setting setting;
@@ -51,6 +51,12 @@ namespace CubeBattle.Units.Enemy
             Debug.DrawRay(ray.origin, ray.direction, Color.white);
 
             return Physics.Raycast(ray, out hit, setting.Distance);
+        }
+
+        public void Tick()
+        {
+            var ray = new Ray(origin.position, setting.Direction);
+            Debug.DrawRay(ray.origin, ray.direction, Color.white);
         }
 
         [System.Serializable]

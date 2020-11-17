@@ -11,6 +11,7 @@ namespace CubeBattle.Units.Warrior
         private readonly Setting setting;
 
         private float speedBoost = 0;
+        private bool isPlaying = true;
 
         public WarriorMovening([Inject(Id = "Unit")] Transform warrior, Setting setting)
         {
@@ -20,7 +21,8 @@ namespace CubeBattle.Units.Warrior
 
         public void Tick()
         {
-            Movening();
+            if(isPlaying)
+                Movening();
         }
 
         public void ChangeSpeed(float newSpeed)
@@ -28,11 +30,22 @@ namespace CubeBattle.Units.Warrior
             speedBoost += newSpeed;
             speedBoost = Mathf.Clamp(speedBoost, speedBoost, 0);
         }
+        public void Stop()
+        {
+            isPlaying = false;
+        }
+
+        public void Start()
+        {
+            isPlaying = true;
+        }
 
         private void Movening()
         {
             warrior.Translate(0, 0, (setting.Speed + speedBoost) * Time.deltaTime);
         }
+
+
 
         [System.Serializable]
         public class Setting

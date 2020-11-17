@@ -10,5 +10,9 @@ namespace CubeBattle.Units
     {
         void EnemyPushing(EnemyFacade enemy);
         void WarriorPushing(WarriorFacade warrior);
+
+        float GetForge();
+
+        void ApplicationPushBoost(float value);
     }
 }
