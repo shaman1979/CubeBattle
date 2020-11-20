@@ -20,12 +20,14 @@ namespace CubeBattle.Units.Enemy
 
         public void ApplicationPushBoost(float value)
         {
-            pushBoost = value;
+            if (value >= 0)
+                pushBoost = value;
         }
 
         public void EnemyPushing(EnemyFacade enemy)
         {
             enemy.ApplicationForse(setting.PushingForse + pushBoost);
+            enemy.Scaning();
         }
 
         public float GetForge()

@@ -26,28 +26,10 @@ namespace CubeBattle.Units
 
         protected IMemoryPool pool;
 
-        protected CollisionGroup collisionGroup;
-
-        public CollisionGroup GetCollisionGroup()
-        {
-            if(collisionGroup == null)
-            {
-                collisionGroup = new CollisionGroup();
-                collisionGroup.AddUnit(this);
-            }
-
-            return collisionGroup;
-        }
-
-        public void SetCollisionGroup(CollisionGroup collisionGroup)
-        {
-            this.collisionGroup = collisionGroup;
-        }
-
         public void Scaning()
         {
             unitSensor.Scaning();
-            movening.Stop();
+            //movening.Stop();
         }
 
         protected void Destroy()
@@ -76,6 +58,10 @@ namespace CubeBattle.Units
             }
         }
 
-        public abstract void ApplicationForse(float forse);
+        public void ApplicationForse(float forse)
+        {
+            pushing.ApplicationPushBoost(forse);
+            movening.ChangeSpeed(forse);
+        }
     }
 }

@@ -9,8 +9,6 @@ namespace CubeBattle.Units.Warrior
 
         private float pushBoost;
 
-        private WarriorFacade unitFacade;
-
         public WarriorPush(Setting setting)
         {
             this.setting = setting;
@@ -18,12 +16,12 @@ namespace CubeBattle.Units.Warrior
 
         public void ApplicationPushBoost(float value)
         {
-            pushBoost = value;
+            if (value >= 0)
+                pushBoost = value;
         }
 
         public void EnemyPushing(EnemyFacade enemy)
         {
-            //var collisionGroup = enemy.GetCollisionGroup();
             enemy.ApplicationForse(-(setting.PushingForce + pushBoost));
         }
 
@@ -35,6 +33,7 @@ namespace CubeBattle.Units.Warrior
         public void WarriorPushing(WarriorFacade warrior)
         {
             warrior.ApplicationForse(setting.PushingForce + pushBoost);
+            warrior.Scaning();
         }
 
         [System.Serializable]
