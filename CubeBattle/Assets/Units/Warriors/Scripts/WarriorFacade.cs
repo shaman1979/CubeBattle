@@ -12,6 +12,7 @@ namespace CubeBattle.Units.Warrior
         public void OnSpawned(IMemoryPool memoryPool)
         {
             pool = memoryPool;
+            ResetSettingOnDefault();
         }
     }
 }

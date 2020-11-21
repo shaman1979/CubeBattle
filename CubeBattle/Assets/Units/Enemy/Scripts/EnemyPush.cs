@@ -26,8 +26,9 @@ namespace CubeBattle.Units.Enemy
 
         public void EnemyPushing(EnemyFacade enemy)
         {
-            enemy.ApplicationForse(setting.PushingForse + pushBoost);
+            enemy.ApplicationForse(GetForge());
             enemy.Scaning();
+            enemy.ChangeSpeed(GetForge());
         }
 
         public float GetForge()
@@ -37,7 +38,8 @@ namespace CubeBattle.Units.Enemy
 
         public void WarriorPushing(WarriorFacade warrior)
         {
-            warrior.ApplicationForse(-(setting.PushingForse + pushBoost));
+            warrior.ApplicationForse(-GetForge());
+            warrior.ChangeSpeed(-GetForge());
         }
 
         [System.Serializable]
