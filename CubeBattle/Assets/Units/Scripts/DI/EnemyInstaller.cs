@@ -1,12 +1,13 @@
 using CubeBattle.Units;
 using CubeBattle.Units.Enemy;
+using CubeBattle.Units.Movening;
 using UnityEngine;
 using Zenject;
 
 public class EnemyInstaller : MonoInstaller
 {
     [SerializeField]
-    private EnemyMovening.Setting moveSetting;
+    private UnitMovening.Setting moveSetting;
 
     [SerializeField]
     private EnemySensor.Setting sensorSetting;
@@ -14,9 +15,12 @@ public class EnemyInstaller : MonoInstaller
     [SerializeField]
     private EnemyPush.Setting pushSetting;
 
+    [SerializeField]
+    private new Rigidbody rigidbody;
+
     public override void InstallBindings()
     {
-        Container.BindInterfacesTo<EnemyMovening>().AsSingle();
+        Container.BindInterfacesTo<UnitMovening>().AsSingle();
         Container.BindInstance(moveSetting);
 
         Container.BindInterfacesTo<EnemyView>().AsSingle();
@@ -30,5 +34,7 @@ public class EnemyInstaller : MonoInstaller
         Container.BindInstance(gameObject.transform).WithId("Unit");
 
         Container.BindInterfacesAndSelfTo<UnitBorderChecker>().AsSingle();
+
+        Container.BindInstance(rigidbody).WithId("Unit");
     }
 }

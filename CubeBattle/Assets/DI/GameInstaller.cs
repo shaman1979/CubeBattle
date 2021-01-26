@@ -15,6 +15,9 @@ public class GameInstaller : MonoInstaller
     [SerializeField]
     private EnemyFacade enemy;
 
+    [SerializeField]
+    private EnemySpawn.Setting enemySpawnSetting;
+
     public override void InstallBindings()
     {
         Container.BindFactory<WarriorFacade, WarriorFactory>()
@@ -32,6 +35,7 @@ public class GameInstaller : MonoInstaller
         Container.BindInterfacesAndSelfTo<InstallingUnitOnRoad>().AsSingle();
 
         Container.BindInterfacesAndSelfTo<EnemySpawn>().AsSingle();
+        Container.BindInstance(enemySpawnSetting);
 
         Container.Bind<TrackFacade>().FromComponentsInHierarchy().AsSingle();
 

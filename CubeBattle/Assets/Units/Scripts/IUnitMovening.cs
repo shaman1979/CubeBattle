@@ -6,8 +6,5 @@ namespace CubeBattle.Units
 {
     public interface IUnitMovening
     {
-        void ChangeSpeed(float newSpeed);
-        void Stop();
-        void Start();
     }
 }

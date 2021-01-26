@@ -50,11 +50,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSetting:
     Speed: 1
+    Direction: {x: 0, y: 0, z: -1}
   sensorSetting:
     Distance: 0.7
     Direction: {x: 0, y: 0, z: -1}
   pushSetting:
     PushingForse: 1
+  rigidbody: {fileID: 7235055322720451508}
 --- !u!114 &5590461128588029883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,14 +117,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804779507513525930}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10
+  m_Drag: 1
+  m_AngularDrag: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0
+  m_Interpolate: 2
+  m_Constraints: 118
+  m_CollisionDetection: 3
 --- !u!1 &3075206990236092556
 GameObject:
   m_ObjectHideFlags: 0

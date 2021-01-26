@@ -1,5 +1,6 @@
 using CubeBattle.Units;
 using CubeBattle.Units.Enemy;
+using CubeBattle.Units.Movening;
 using CubeBattle.Units.Warrior;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace CubeBattle.Units.DI
     public class WarriorInstaller : MonoInstaller
     {
         [SerializeField]
-        private WarriorMovening.Setting moveSetting;
+        private UnitMovening.Setting moveSetting;
 
         [SerializeField]
         private WarriorSensor.Setting sensorSetting;
@@ -18,9 +19,12 @@ namespace CubeBattle.Units.DI
         [SerializeField]
         private WarriorPush.Setting pushSetting;
 
+        [SerializeField]
+        private new Rigidbody rigidbody;
+
         public override void InstallBindings()
         {
-            Container.BindInterfacesTo<WarriorMovening>().AsSingle();
+            Container.BindInterfacesTo<UnitMovening>().AsSingle();
             Container.BindInstance(moveSetting);
 
             Container.BindInterfacesTo<WarriorView>().AsSingle();
@@ -34,6 +38,8 @@ namespace CubeBattle.Units.DI
             Container.BindInstance(gameObject.transform).WithId("Unit");
 
             Container.BindInterfacesAndSelfTo<UnitBorderChecker>().AsSingle();
-        } 
+
+            Container.BindInstance(rigidbody).WithId("Unit");
+        }
     }
 }

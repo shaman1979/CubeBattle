@@ -36,14 +36,8 @@ namespace CubeBattle.Units
             pushing.ApplicationPushBoost(forse);
         }
 
-        public void ChangeSpeed(float speed)
-        {
-            movening.ChangeSpeed(speed);
-        }
-
         protected virtual void ResetSettingOnDefault()
         {
-            movening.ChangeSpeed(0);
             pushing.ApplicationPushBoost(0);
         }
 
@@ -57,11 +51,6 @@ namespace CubeBattle.Units
             borderChecker.WentToBorder += Destroy;
             unitSensor.DiscoveresWarrior += pushing.WarriorPushing;
             unitSensor.DiscoveredEnemy += pushing.EnemyPushing;
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            Scaning();
         }
 
         private void OnDrawGizmos()
