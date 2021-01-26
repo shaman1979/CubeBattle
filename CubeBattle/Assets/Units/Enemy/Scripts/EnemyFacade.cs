@@ -12,7 +12,6 @@ namespace CubeBattle.Units.Enemy
         public void OnSpawned(IMemoryPool memoryPool)
         {
             pool = memoryPool;
-            ResetSettingOnDefault();
         }
     }
 }

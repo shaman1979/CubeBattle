@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CubeBattle.Units.Enemy
+namespace CubeBattle.Units.View
 {
-    public class EnemyView : IUnitView
+    public class UnitView : IUnitView
     {
         private const string ColorReferens = "_Color";
 
         private readonly MeshRenderer enemyRenderer;
 
-        public EnemyView(MeshRenderer enemyRenderer)
+        public UnitView(MeshRenderer enemyRenderer)
         {
             this.enemyRenderer = enemyRenderer;
         }

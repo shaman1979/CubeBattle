@@ -27,7 +27,7 @@ namespace CubeBattle.Tracks
                 WarriorPlace(message.TrackFacade, message.TrackFacade.GetWarriorSpawnPosition(), warriorFactory);
             });
 
-            subscriber.Subscriber<EnemyPlaceOnTrackMessages>(message =>
+            subscriber.Subscriber<EnemyPlaceOnTrackMessage>(message =>
             {
                 WarriorPlace(message.TrackFacade, message.TrackFacade.GetEnemySpawnPosition(), enemyFactory);
             });

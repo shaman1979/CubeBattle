@@ -41,7 +41,7 @@ namespace CubeBattle.Spawners
 
         private void Spawn(TrackFacade track)
         {
-            publisher.Publish(new EnemyPlaceOnTrackMessages(track));
+            publisher.Publish(new EnemyPlaceOnTrackMessage(track));
         }
 
         [System.Serializable]

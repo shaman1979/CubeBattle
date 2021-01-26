@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace CubeBattle.Messages
 {
-    public class EnemyPlaceOnTrackMessages
+    public class EnemyPlaceOnTrackMessage
     {
-        public EnemyPlaceOnTrackMessages(TrackFacade trackFacade)
+        public EnemyPlaceOnTrackMessage(TrackFacade trackFacade)
         {
             TrackFacade = trackFacade;
         }
