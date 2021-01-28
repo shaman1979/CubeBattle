@@ -40,5 +40,7 @@ public class GameInstaller : MonoInstaller
         Container.Bind<TrackFacade>().FromComponentsInHierarchy().AsSingle();
 
         Container.BindInterfacesTo<MessageBus>().AsSingle();
+
+        UnitShopIntraller.Install(Container);
     }
 }
