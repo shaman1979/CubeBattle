@@ -24,12 +24,12 @@ namespace CubeBattle.Tracks
         {
             subscriber.Subscriber<WarriorPlaceOnTrackMessage>(message =>
             { 
-                WarriorPlace(message.TrackFacade, message.TrackFacade.GetWarriorSpawnPosition(), warriorFactory);
+                WarriorPlace(message.TrackFacade, message.TrackFacade.GetWarriorSpawnPoint(), warriorFactory);
             });
 
             subscriber.Subscriber<EnemyPlaceOnTrackMessage>(message =>
             {
-                WarriorPlace(message.TrackFacade, message.TrackFacade.GetEnemySpawnPosition(), enemyFactory);
+                WarriorPlace(message.TrackFacade, message.TrackFacade.GetEnemySpawnPoint(), enemyFactory);
             });
         }
 

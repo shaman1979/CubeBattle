@@ -12,38 +12,52 @@ namespace CubeBattle.Tracks
     public class TrackFacade : SerializedMonoBehaviour
     {
         [SerializeField]
-        private Transform warriorSpawnPoint;
-
-        [SerializeField]
-        private Transform enemySpawnPoint;
-
-        [SerializeField]
         private string trackName;
+
+        [Inject]
+        private TrackSpawnPoint trackSpawnPoint;
 
         [Inject]
         private IPublisher publisher;
 
-        public Vector3 GetWarriorSpawnPosition() => warriorSpawnPoint.position;
-        public Vector3 GetEnemySpawnPosition() => enemySpawnPoint.position;
+        [Inject]
+        private TrackSelectedView trackSelectedView;
 
         public string GetTrackName() => trackName;
 
+
+
+        public Vector3 GetEnemySpawnPoint()
+        {
+            return trackSpawnPoint.GetEnemySpawnPosition();
+        }
+
+        public Vector3 GetWarriorSpawnPoint()
+        {
+            return trackSpawnPoint.GetWarriorSpawnPosition();
+        }
+
+        public void Selection()
+        {
+            trackSelectedView.Selection();
+        }
+
+        public void RemoveSelection()
+        {
+            trackSelectedView.RemoveSelection();
+        }
+
         private void OnMouseDown()
         {
-            publisher.Publish(new WarriorPlaceOnTrackMessage(this));            
+            publisher.Publish(new WarriorPlaceOnTrackMessage(this));
         }
 
         private void OnDrawGizmos()
         {
-            if(warriorSpawnPoint)
+            if (trackSpawnPoint != null)
             {
-                DrawStartPoint(GetWarriorSpawnPosition(), Color.green);
-
-            }
-
-            if (enemySpawnPoint)
-            {
-                DrawStartPoint(GetEnemySpawnPosition(), Color.red);
+                DrawStartPoint(trackSpawnPoint.GetWarriorSpawnPosition(), Color.green);
+                DrawStartPoint(trackSpawnPoint.GetEnemySpawnPosition(), Color.red);
             }
         }
 
