@@ -1,4 +1,5 @@
-﻿using CubeBattle.MessageBus;
+﻿using CubeBattle.Cameras.Extension;
+using CubeBattle.MessageBus;
 using CubeBattle.Messages;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,13 +8,17 @@ using Zenject;
 
 namespace CubeBattle.BuyUnits
 {
-    public class PlaceUnitMode : IInitializable 
+    public class PlaceUnitMode : IInitializable, ITickable
     {
         private readonly ISubscriber subscriber;
+        private readonly PlaceUnitModeView view;
 
-        public PlaceUnitMode(ISubscriber subscriber)
+        private bool isRunning = false;
+
+        public PlaceUnitMode(ISubscriber subscriber, PlaceUnitModeView view)
         {
             this.subscriber = subscriber;
+            this.view = view;
         }
 
         public void Initialize()
@@ -24,24 +29,46 @@ namespace CubeBattle.BuyUnits
                 {
                     case ModeWorker.Run:
                         Run();
+                        isRunning = true;
                         break;
                     case ModeWorker.Stop:
                         Stop();
-                        break;
-                    default:
+                        isRunning = false;
                         break;
                 }
             });
         }
 
-        public void Run()
+        public void Tick()
         {
-            Debug.Log($"Режим установки юнита запущен.");
+            if(isRunning)
+            {
+                view.PositionChange(CursorPosition());
+            }
         }
 
-        public void Stop()
+        private void Run()
+        {
+            Debug.Log($"Режим установки юнита запущен.");
+
+            view.PreviewShow(null, CursorPosition());
+        }
+
+        private void Stop()
         {
             Debug.Log($"Режим установки юнита остановлен.");
+        }
+        private Vector3 CursorPosition()
+        {
+            var plane = new Plane(Vector3.up, Vector3.zero);
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if(plane.Raycast(ray, out var position))
+            {
+                return ray.GetPoint(position);
+            }
+
+            return Vector3.zero;
         }
 
         public enum ModeWorker
