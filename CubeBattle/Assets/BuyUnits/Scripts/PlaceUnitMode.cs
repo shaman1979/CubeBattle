@@ -12,14 +12,22 @@ namespace CubeBattle.BuyUnits
     public class PlaceUnitMode : IInitializable, ITickable
     {
         private readonly ISubscriber subscriber;
+        private readonly IPublisher publisher;
+
         private readonly PlaceUnitModeView view;
         private readonly CursorCollision cursorCollision;
 
         private bool isRunning = false;
+        private TrackFacade selectionTrack;
 
-        public PlaceUnitMode(ISubscriber subscriber, PlaceUnitModeView view, CursorCollision cursorCollision)
+        public PlaceUnitMode(
+            ISubscriber subscriber,
+            IPublisher publisher,
+            PlaceUnitModeView view,
+            CursorCollision cursorCollision)
         {
             this.subscriber = subscriber;
+            this.publisher = publisher;
             this.view = view;
             this.cursorCollision = cursorCollision;
         }
@@ -37,9 +45,7 @@ namespace CubeBattle.BuyUnits
                         Stop();                      
                         break;
                 }
-            });
-
-            
+            });            
         }
 
         public void Tick()
@@ -68,17 +74,21 @@ namespace CubeBattle.BuyUnits
             cursorCollision.OnTrackEnter -= TrackSelection;
             cursorCollision.OnTrackExit -= TrackRemoveSelection;
 
+            publisher.Publish(new WarriorPlaceOnTrackMessage(selectionTrack));
+
             Debug.Log($"Режим установки юнита остановлен.");
         }
 
         private void TrackSelection(TrackFacade trackFacade)
         {
             trackFacade.Selection();
+            selectionTrack = trackFacade;
         }
 
         private void TrackRemoveSelection(TrackFacade trackFacade)
         {
             trackFacade.RemoveSelection();
+            selectionTrack = null;
         }
 
         private Vector3 CursorPosition()
