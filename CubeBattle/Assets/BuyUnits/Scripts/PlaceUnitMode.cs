@@ -74,7 +74,13 @@ namespace CubeBattle.BuyUnits
             cursorCollision.OnTrackEnter -= TrackSelection;
             cursorCollision.OnTrackExit -= TrackRemoveSelection;
 
-            publisher.Publish(new WarriorPlaceOnTrackMessage(selectionTrack));
+            view.PreviewHide();
+
+            if (selectionTrack != null)
+            {
+                publisher.Publish(new WarriorPlaceOnTrackMessage(selectionTrack));
+                TrackRemoveSelection(selectionTrack);
+            }
 
             Debug.Log($"Режим установки юнита остановлен.");
         }

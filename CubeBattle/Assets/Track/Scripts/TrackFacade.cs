@@ -47,11 +47,6 @@ namespace CubeBattle.Tracks
             trackSelectedView.RemoveSelection();
         }
 
-        private void OnMouseDown()
-        {
-            publisher.Publish(new WarriorPlaceOnTrackMessage(this));
-        }
-
         private void OnDrawGizmos()
         {
             if (trackSpawnPoint != null)
