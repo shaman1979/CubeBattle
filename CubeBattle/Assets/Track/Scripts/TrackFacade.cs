@@ -24,6 +24,9 @@ namespace CubeBattle.Tracks
         [Inject]
         private UnitsInTrack unitsInTrack;
 
+        [Inject]
+        private TrackShake trackShake;
+
         public string GetTrackName() => trackName;
 
         public void AddUnit(UnitFacade unit)
@@ -58,12 +61,26 @@ namespace CubeBattle.Tracks
 
         public bool HasEnemyPlace()
         {
-            return trackSpawnPoint.HasEnemyPlace();
+            if(trackSpawnPoint.HasEnemyPlace())
+            {
+                return true;
+            }
+
+            trackShake.Shake();
+
+            return false;
         }
 
         public bool HasWarriorPlace()
         {
-            return trackSpawnPoint.HasWarriorPlace();
+            if (trackSpawnPoint.HasWarriorPlace())
+            {
+                return true;
+            }
+
+            trackShake.Shake();
+
+            return false;
         }
 
         private void OnDrawGizmos()
