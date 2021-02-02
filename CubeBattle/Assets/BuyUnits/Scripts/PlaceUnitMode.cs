@@ -42,10 +42,10 @@ namespace CubeBattle.BuyUnits
                         Run();
                         break;
                     case ModeWorker.Stop:
-                        Stop();                      
+                        Stop();
                         break;
                 }
-            });            
+            });
         }
 
         public void Tick()
@@ -76,12 +76,15 @@ namespace CubeBattle.BuyUnits
 
             view.PreviewHide();
 
-            if (selectionTrack != null)
+            if (selectionTrack == null)
+                return;
+
+            if (selectionTrack.HasWarriorPlace())
             {
                 publisher.Publish(new WarriorPlaceOnTrackMessage(selectionTrack));
-                TrackRemoveSelection(selectionTrack);
             }
 
+            TrackRemoveSelection(selectionTrack);
             Debug.Log($"Режим установки юнита остановлен.");
         }
 

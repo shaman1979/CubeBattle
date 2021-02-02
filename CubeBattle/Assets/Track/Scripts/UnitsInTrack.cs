@@ -1,6 +1,7 @@
 ﻿using CubeBattle.Units;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace CubeBattle.Tracks
@@ -22,6 +23,11 @@ namespace CubeBattle.Tracks
         public void RemoveUnit(UnitFacade unit)
         {
             units.Remove(unit);
+        }
+
+        public IEnumerable<float> GetUnitTravelledPosition()
+        {
+            return units.Select(x => x.transform.position.z);
         }
 
         public void Clear()

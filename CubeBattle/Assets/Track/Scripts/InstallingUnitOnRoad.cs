@@ -36,6 +36,8 @@ namespace CubeBattle.Tracks
         private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<TrackFacade,T>  factory) where T : UnitFacade
         {
             var unit = factory.Create(trackFacade);
+
+            trackFacade.AddUnit(unit);
             unit.transform.position = spawnPoint;
         }
     }

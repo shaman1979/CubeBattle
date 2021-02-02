@@ -27,10 +27,13 @@ namespace CubeBattle.Spawners
         {
             if (time > setting.SpawnOffset)
             {
-                if (setting.IsRandom)
-                    Spawn(trackFacades[Random.Range(0, trackFacades.Count)]);
-                else
-                    Spawn(trackFacades[setting.TrackNumber]);
+                var id = setting.IsRandom ? Random.Range(0, trackFacades.Count) : setting.TrackNumber;
+                var track = GetTrackFacade(id);
+
+                if (track.HasEnemyPlace())
+                {
+                    Spawn(GetTrackFacade(id));
+                }
 
                 time = 0;
                 return;
@@ -42,6 +45,11 @@ namespace CubeBattle.Spawners
         private void Spawn(TrackFacade track)
         {
             publisher.Publish(new EnemyPlaceOnTrackMessage(track));
+        }
+
+        private TrackFacade GetTrackFacade(int id)
+        {
+            return trackFacades[id];
         }
 
         [System.Serializable]

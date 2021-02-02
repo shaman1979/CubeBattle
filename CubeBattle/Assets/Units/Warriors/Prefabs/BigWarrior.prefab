@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSetting:
-    Speed: 1
+    Speed: 0
     Direction: {x: 0, y: 0, z: 1}
   rigidbody: {fileID: 2244894003803469064}
 --- !u!114 &7757386197041842331

@@ -56,6 +56,16 @@ namespace CubeBattle.Tracks
             trackSelectedView.RemoveSelection();
         }
 
+        public bool HasEnemyPlace()
+        {
+            return trackSpawnPoint.HasEnemyPlace();
+        }
+
+        public bool HasWarriorPlace()
+        {
+            return trackSpawnPoint.HasWarriorPlace();
+        }
+
         private void OnDrawGizmos()
         {
             if (trackSpawnPoint != null)
