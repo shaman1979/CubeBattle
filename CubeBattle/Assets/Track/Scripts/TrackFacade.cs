@@ -61,14 +61,7 @@ namespace CubeBattle.Tracks
 
         public bool HasEnemyPlace()
         {
-            if(trackSpawnPoint.HasEnemyPlace())
-            {
-                return true;
-            }
-
-            trackShake.Shake();
-
-            return false;
+            return trackSpawnPoint.HasEnemyPlace();
         }
 
         public bool HasWarriorPlace()
