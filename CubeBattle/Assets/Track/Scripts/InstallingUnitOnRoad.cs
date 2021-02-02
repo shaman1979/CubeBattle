@@ -33,13 +33,10 @@ namespace CubeBattle.Tracks
             });
         }
 
-        private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<T>  factory) where T : UnitFacade
+        private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<TrackFacade,T>  factory) where T : UnitFacade
         {
-            var unit = factory.Create();
-
+            var unit = factory.Create(trackFacade);
             unit.transform.position = spawnPoint;
-
-            Debug.Log($"Создание воина на дороге {trackFacade.GetTrackName()}.");
         }
     }
 }

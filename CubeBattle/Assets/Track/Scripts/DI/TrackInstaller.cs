@@ -23,6 +23,8 @@ namespace CubeBattle.Tracks.DI
             Container.Bind<TrackSelectedView>().AsSingle();
             Container.BindInstances(selectionSetting);
 
+            Container.Bind<UnitsInTrack>().AsSingle();
+
             Container.BindInstances(trackMeshRenderer);
         }
     }

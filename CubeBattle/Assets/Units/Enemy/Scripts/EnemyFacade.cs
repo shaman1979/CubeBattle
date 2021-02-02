@@ -1,17 +1,20 @@
-﻿using Zenject;
+﻿using CubeBattle.Tracks;
+using Zenject;
 
 namespace CubeBattle.Units.Enemy
 {
-    public class EnemyFacade : UnitFacade, IPoolable<IMemoryPool>
+    public class EnemyFacade : UnitFacade, IPoolable<TrackFacade, IMemoryPool>
     {
         public void OnDespawned()
         {
             pool = null;
+            track.RemoveUnit(this);
         }
 
-        public void OnSpawned(IMemoryPool memoryPool)
+        public void OnSpawned(TrackFacade trackFacade, IMemoryPool memoryPool)
         {
             pool = memoryPool;
+            track = trackFacade;
         }
     }
 }

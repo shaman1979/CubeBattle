@@ -20,14 +20,14 @@ public class GameInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        Container.BindFactory<WarriorFacade, WarriorFactory>()
-            .FromPoolableMemoryPool<WarriorFacade, WarriorPool>(binder => binder
+        Container.BindFactory<TrackFacade, WarriorFacade, WarriorFactory>()
+            .FromPoolableMemoryPool<TrackFacade, WarriorFacade, WarriorPool>(binder => binder
             .WithInitialSize(5)
             .FromComponentInNewPrefab(warrior)
             .UnderTransformGroup("Warriors"));
 
-        Container.BindFactory<EnemyFacade, EnemyFactory>()
-            .FromPoolableMemoryPool<EnemyFacade, EnemyPool>(binder => binder
+        Container.BindFactory<TrackFacade, EnemyFacade, EnemyFactory>()
+            .FromPoolableMemoryPool<TrackFacade, EnemyFacade, EnemyPool>(binder => binder
             .WithInitialSize(5)
             .FromComponentInNewPrefab(enemy)
             .UnderTransformGroup("Enemyes"));

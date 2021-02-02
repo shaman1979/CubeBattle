@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using CubeBattle.Tracks;
+using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 using Zenject;
@@ -18,9 +19,12 @@ namespace CubeBattle.Units
 
         protected IMemoryPool pool;
 
+        protected TrackFacade track;
+
         protected void Destroy()
         {
             pool.Despawn(this);
+            track.RemoveUnit(this);
         }
 
         private void Awake()

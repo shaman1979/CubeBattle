@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using Zenject;
 using CubeBattle.MessageBus;
 using CubeBattle.Messages;
+using CubeBattle.Units;
 
 namespace CubeBattle.Tracks
 {
@@ -18,14 +19,22 @@ namespace CubeBattle.Tracks
         private TrackSpawnPoint trackSpawnPoint;
 
         [Inject]
-        private IPublisher publisher;
+        private TrackSelectedView trackSelectedView;
 
         [Inject]
-        private TrackSelectedView trackSelectedView;
+        private UnitsInTrack unitsInTrack;
 
         public string GetTrackName() => trackName;
 
+        public void AddUnit(UnitFacade unit)
+        {
+            unitsInTrack.AddUnit(unit);
+        }
 
+        public void RemoveUnit(UnitFacade unit)
+        {
+            unitsInTrack.RemoveUnit(unit);
+        }
 
         public Vector3 GetEnemySpawnPoint()
         {
