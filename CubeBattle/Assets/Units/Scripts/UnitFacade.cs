@@ -27,6 +27,11 @@ namespace CubeBattle.Units
             track.RemoveUnit(this);
         }
 
+        private int Power()
+        {
+            return 
+        }
+
         private void Awake()
         {
             borderChecker.WentToBorder += Destroy;

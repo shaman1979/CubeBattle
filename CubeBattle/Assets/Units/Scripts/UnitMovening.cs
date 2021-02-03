@@ -8,17 +8,15 @@ namespace CubeBattle.Units.Movening
     public class UnitMovening : ITickable, IUnitMovening
     {
         private readonly Rigidbody unitRigidbody;
-        private readonly Transform unitTransform;
         private readonly Setting setting;
-        
+
+        public float Speed { get => setting.Speed; set => setting.Speed = value; }
 
         public UnitMovening(
             [Inject(Id = "Unit")] Rigidbody unitRigidbody,
-            [Inject(Id = "Unit")] Transform unitTransform,
             Setting setting)
         {
             this.unitRigidbody = unitRigidbody;
-            this.unitTransform = unitTransform;
             this.setting = setting;
         }
 
@@ -29,7 +27,6 @@ namespace CubeBattle.Units.Movening
 
         private void Movening()
         {
-            //unitRigidbody.MovePosition(GetNewPosition(setting.Speed * Time.deltaTime));
             unitRigidbody.velocity = GetNewPosition(setting.Speed * Time.deltaTime);
         }
 
