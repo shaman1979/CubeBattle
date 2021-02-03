@@ -32,6 +32,7 @@ namespace CubeBattle.Tracks.DI
             Container.BindInstances(selectionSetting);
 
             Container.Bind<UnitsInTrack>().AsSingle();
+            Container.BindInterfacesTo<TrackBalance>().AsSingle();
 
             Container.BindInstances(trackMeshRenderer);
             Container.BindInstances(trackTransform);

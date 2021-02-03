@@ -8,7 +8,6 @@ namespace CubeBattle.Units.Enemy
         public void OnDespawned()
         {
             pool = null;
-            track.RemoveUnit(this);
         }
 
         public void OnSpawned(TrackFacade trackFacade, IMemoryPool memoryPool)

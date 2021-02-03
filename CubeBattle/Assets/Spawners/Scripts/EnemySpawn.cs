@@ -25,6 +25,9 @@ namespace CubeBattle.Spawners
 
         public void Tick()
         {
+            if (!setting.IsRunning)
+                return;
+
             if (time > setting.SpawnOffset)
             {
                 var id = setting.IsRandom ? Random.Range(0, trackFacades.Count) : setting.TrackNumber;
@@ -60,6 +63,7 @@ namespace CubeBattle.Spawners
             //Debug values
             public bool IsRandom;
             public int TrackNumber;
+            public bool IsRunning;
         }
     }
 }

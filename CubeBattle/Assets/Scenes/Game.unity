@@ -163,6 +163,7 @@ MonoBehaviour:
     SpawnOffset: 5
     IsRandom: 0
     TrackNumber: 0
+    IsRunning: 0
 --- !u!4 &106140279
 Transform:
   m_ObjectHideFlags: 0

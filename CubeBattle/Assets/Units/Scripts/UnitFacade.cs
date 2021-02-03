@@ -17,6 +17,9 @@ namespace CubeBattle.Units
         [Inject]
         protected IUnitView view;
 
+        [Inject]
+        private UnitPower unitPower;
+
         protected IMemoryPool pool;
 
         protected TrackFacade track;
@@ -27,9 +30,9 @@ namespace CubeBattle.Units
             track.RemoveUnit(this);
         }
 
-        private int Power()
+        public int GetPower()
         {
-            return 
+            return unitPower.GetPower();
         }
 
         private void Awake()

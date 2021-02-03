@@ -20,6 +20,7 @@ namespace CubeBattle.Units
 
             Container.BindInterfacesAndSelfTo<UnitBorderChecker>().AsSingle();
             Container.BindInterfacesTo<UnitView>().AsSingle();
+            Container.Bind<UnitPower>().AsSingle();
 
             Container.BindInstance(gameObject.transform).WithId("Unit");
             Container.BindInstance(rigidbody).WithId("Unit");

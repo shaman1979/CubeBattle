@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSetting:
-    Speed: 0
+    Speed: 1
     Direction: {x: 0, y: 0, z: -1}
   rigidbody: {fileID: 7235055322720451508}
 --- !u!114 &5590461128588029883
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
