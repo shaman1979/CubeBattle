@@ -1,3 +1,4 @@
+using CubeBattle.MessageBus;
 using UnityEngine;
 using Zenject;
 
@@ -33,6 +34,8 @@ namespace CubeBattle.Tracks.DI
 
             Container.Bind<UnitsInTrack>().AsSingle();
             Container.BindInterfacesTo<TrackBalance>().AsSingle();
+
+            Container.Bind(typeof(ISubscriber), typeof(IPublisher)).WithId("Local").To<MessageBus.MessageBus>().AsSingle();
 
             Container.BindInstances(trackMeshRenderer);
             Container.BindInstances(trackTransform);

@@ -1,4 +1,6 @@
-﻿using CubeBattle.Units;
+﻿using CubeBattle.MessageBus;
+using CubeBattle.Tracks.Messages;
+using CubeBattle.Units;
 using CubeBattle.Units.Enemy;
 using CubeBattle.Units.Warrior;
 using System;
@@ -11,13 +13,15 @@ namespace CubeBattle.Tracks
 {
     public class TrackBalance : IInitializable
     {
-        private readonly UnitsInTrack unitsInTrack; 
+        private readonly UnitsInTrack unitsInTrack;
+        private readonly IPublisher publisher;
 
         private int warriorPower;
         private int enemyPower;
 
-        public TrackBalance(UnitsInTrack unitsInTrack)
+        public TrackBalance(UnitsInTrack unitsInTrack, [Inject(Id = "Local")] IPublisher publisher)
         {
+            this.publisher = publisher;
             this.unitsInTrack = unitsInTrack;
         }
 
@@ -32,17 +36,13 @@ namespace CubeBattle.Tracks
         private void ChangeWarriorPower(int power)
         {
             warriorPower += power;
-            OnChangeBalance?.Invoke(warriorPower, enemyPower);
-
-            Debug.Log($"Warrior = {warriorPower}");
+            publisher.Publish(new ChangeBalanceMessage(warriorPower, enemyPower));
         }
 
         private void ChangeEnemyPower(int power)
         {
             enemyPower += power;
-            OnChangeBalance?.Invoke(warriorPower, enemyPower);
-
-            Debug.Log($"Enemy = {enemyPower}");
+            publisher.Publish(new ChangeBalanceMessage(warriorPower, enemyPower));
         }
 
         private void AddPower(UnitFacade unitFacade)
