@@ -7,7 +7,7 @@ namespace CubeBattle.Units
 {
     public class UnitBorderChecker : IFixedTickable
     {
-        public Action WentToBorder;
+        public Action<BorderType> WentToBorder;
 
         private readonly Transform warrior;
 
@@ -18,10 +18,20 @@ namespace CubeBattle.Units
 
         public void FixedTick()
         {
-            if(warrior.position.z > CameraExtensions.GetUpBorder() || warrior.position.z < CameraExtensions.GetDownBorder())
+            if (warrior.position.z < CameraExtensions.GetDownBorder())
             {
-                WentToBorder?.Invoke();
+                WentToBorder?.Invoke(BorderType.PlayerBase);
             }
+            else if (warrior.position.z > CameraExtensions.GetUpBorder())
+            {
+                WentToBorder?.Invoke(BorderType.EnemyBase);
+            }
+        }
+
+        public enum BorderType
+        {
+            EnemyBase,
+            PlayerBase
         }
     }
 }

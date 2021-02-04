@@ -1,4 +1,5 @@
-﻿using CubeBattle.Tracks;
+﻿using CubeBattle.MessageBus;
+using CubeBattle.Tracks;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -18,7 +19,10 @@ namespace CubeBattle.Units
         protected IUnitView view;
 
         [Inject]
-        private UnitPower unitPower;
+        protected IPublisher publisher;
+
+        [Inject]
+        protected UnitPower unitPower;
 
         protected IMemoryPool pool;
 
@@ -37,7 +41,9 @@ namespace CubeBattle.Units
 
         private void Awake()
         {
-            borderChecker.WentToBorder += Destroy;
+            borderChecker.WentToBorder += OnCollisionBorder;
         }
+
+        protected abstract void OnCollisionBorder(UnitBorderChecker.BorderType borderType);
     }
 }

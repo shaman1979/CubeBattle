@@ -1,3 +1,4 @@
+using CubeBattle.Bases;
 using CubeBattle.MessageBus;
 using CubeBattle.Spawners;
 using CubeBattle.Tracks;
@@ -41,6 +42,9 @@ public class GameInstaller : MonoInstaller
 
         Container.BindInterfacesTo<MessageBus>().AsSingle();
 
-        UnitShopIntraller.Install(Container);
+        Container.BindInterfacesAndSelfTo<PlayerBaseHealth>().AsSingle();
+        Container.BindInterfacesAndSelfTo<EnemyBaseHealth>().AsSingle();
+
+        UnitShopInstaller.Install(Container);
     }
 }

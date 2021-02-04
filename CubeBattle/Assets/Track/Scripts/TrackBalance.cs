@@ -25,8 +25,6 @@ namespace CubeBattle.Tracks
             this.unitsInTrack = unitsInTrack;
         }
 
-        public event Action<int, int> OnChangeBalance; 
-
         public void Initialize()
         {
             unitsInTrack.OnUnitAdding += AddPower;

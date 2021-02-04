@@ -1,4 +1,5 @@
-﻿using CubeBattle.Tracks;
+﻿using CubeBattle.Messages;
+using CubeBattle.Tracks;
 using Zenject;
 
 namespace CubeBattle.Units.Enemy
@@ -14,6 +15,16 @@ namespace CubeBattle.Units.Enemy
         {
             pool = memoryPool;
             track = trackFacade;
+        }
+
+        protected override void OnCollisionBorder(UnitBorderChecker.BorderType borderType)
+        {
+            if(borderType.Equals(UnitBorderChecker.BorderType.PlayerBase))
+            {
+                publisher.Publish(new DealingPlayerBaseMessage(GetPower()));
+            }
+
+            Destroy();
         }
     }
 }
