@@ -11,6 +11,9 @@ namespace CubeBattle.Units
         private UnitMovening.Setting moveSetting;
 
         [SerializeField]
+        private UnitView.Setting viewSetting;
+
+        [SerializeField]
         private new Rigidbody rigidbody;
 
         public override void InstallBindings()
@@ -19,7 +22,10 @@ namespace CubeBattle.Units
             Container.BindInstance(moveSetting);
 
             Container.BindInterfacesAndSelfTo<UnitBorderChecker>().AsSingle();
+
             Container.BindInterfacesTo<UnitView>().AsSingle();
+            Container.BindInstance(viewSetting);
+
             Container.Bind<UnitPower>().AsSingle();
 
             Container.BindInstance(gameObject.transform).WithId("Unit");
