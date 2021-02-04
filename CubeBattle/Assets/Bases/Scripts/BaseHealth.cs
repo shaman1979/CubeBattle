@@ -9,8 +9,6 @@ namespace CubeBattle.Bases
 {
     public abstract class BaseHealth
     {
-        public event Action<int> OnHealthChanged;
-
         [Inject]
         protected ISubscriber subscriber;
 
@@ -23,7 +21,9 @@ namespace CubeBattle.Bases
         {
             health -= damage;
             health = Mathf.Clamp(health, 0, 100);
-            OnHealthChanged?.Invoke(health);
+            ViewUpdate(health);
         }
+
+        protected abstract void ViewUpdate(int health);
     }
 }

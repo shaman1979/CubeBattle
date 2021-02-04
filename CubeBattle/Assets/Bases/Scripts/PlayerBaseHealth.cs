@@ -11,7 +11,11 @@ namespace CubeBattle.Bases
         public void Initialize()
         {
             subscriber.Subscriber<DealingPlayerBaseMessage>(message => DealingDamage(message.Damage));
-            OnHealthChanged += health => Debug.Log($"Жизней у Игрока {health}");
+        }
+
+        protected override void ViewUpdate(int health)
+        {
+            publisher.Publish(new PlayerBaseHealthChangeMessage(health));
         }
     }
 }
