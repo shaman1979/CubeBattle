@@ -5,16 +5,22 @@ using CubeBattle.UnitShop.UI;
 using UnityEngine;
 using Zenject;
 
-public class UnitShopInstaller : Installer<UnitShopInstaller>
+public class UnitShopInstaller : MonoInstaller<UnitShopInstaller>
 {
+    [SerializeField]
+    private ShopInitialize.Setting shopSetting;
+
+    [SerializeField]
+    private Transform parent;
+
     public override void InstallBindings()
     {
-        Container.BindInterfacesAndSelfTo<PlaceUnitMode>().AsSingle();
-        Container.Bind<CursorCollision>().FromComponentInHierarchy().AsCached();
-
         Container.BindInterfacesAndSelfTo<ShopInitialize>().AsSingle();
 
         Container.BindFactory<UnitBuyButton, UnitData, UnitBuyButton, UnitBuyButton.Factory>()
             .FromFactory<UnitBuyButtonFactory>();
+
+        Container.BindInstance(shopSetting);
+        Container.BindInstance(parent);
     }
 }
