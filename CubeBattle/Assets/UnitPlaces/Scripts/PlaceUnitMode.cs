@@ -69,6 +69,7 @@ namespace CubeBattle.BuyUnits
 
         private void Stop()
         {
+            Debug.Log($"Режим установки юнита остановлен.");
             isRunning = false;
 
             cursorCollision.OnTrackEnter -= TrackSelection;
@@ -84,8 +85,7 @@ namespace CubeBattle.BuyUnits
                 publisher.Publish(new WarriorPlaceOnTrackMessage(selectionTrack));
             }
 
-            TrackRemoveSelection(selectionTrack);
-            Debug.Log($"Режим установки юнита остановлен.");
+            TrackRemoveSelection(selectionTrack);          
         }
 
         private void TrackSelection(TrackFacade trackFacade)

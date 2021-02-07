@@ -33,7 +33,7 @@ namespace CubeBattle.UnitShop
             var buttons = new List<UnitBuyButton>(datas.Count());
             foreach (var data in datas)
             {
-                buttons.Add(factory.Create(setting.Prefab, data));
+                buttons.Add(ButtonGenerate(data));
             }
 
             return buttons;

@@ -10,7 +10,7 @@ using Zenject;
 namespace CubeBattle.UnitShop.UI
 {
     [RequireComponent(typeof(UnitBuyButtonView))]
-    public class UnitBuyButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+    public class UnitBuyButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler , IBeginDragHandler, IEndDragHandler
     {
         [SerializeField]
         private UnitBuyButtonView view;
@@ -35,6 +35,16 @@ namespace CubeBattle.UnitShop.UI
         public void OnPointerDown(PointerEventData eventData)
         {
             publisher.Publish(new PlaceUnitMessage(BuyUnits.PlaceUnitMode.ModeWorker.Run, currentData));
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            //publisher.Publish(new PlaceUnitMessage(BuyUnits.PlaceUnitMode.ModeWorker.Run, currentData));
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            //publisher.Publish(new PlaceUnitMessage(BuyUnits.PlaceUnitMode.ModeWorker.Stop));
         }
 
         public class Factory : PlaceholderFactory<UnitBuyButton, UnitData, UnitBuyButton>
