@@ -21,6 +21,6 @@ namespace CubeBattle.Units.Datas
         public GameObject Preview { get; private set; }
 
         [SerializeField, TabGroup("ShopOptions")]
-        public Sprite icon { get; private set; }
+        public Sprite Icon { get; private set; }
     }
 }

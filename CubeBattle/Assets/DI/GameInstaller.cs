@@ -7,6 +7,10 @@ using CubeBattle.Units.Factory;
 using CubeBattle.Units.Warrior;
 using UnityEngine;
 using Zenject;
+using Sirenix.OdinInspector;
+using CubeBattle.UnitShop;
+using CubeBattle.Units.Datas;
+using CubeBattle.UnitShop.UI;
 
 public class GameInstaller : MonoInstaller
 {
@@ -18,6 +22,9 @@ public class GameInstaller : MonoInstaller
 
     [SerializeField]
     private EnemySpawn.Setting enemySpawnSetting;
+
+    [SerializeField]
+    private ShopInitialize.Setting shopSetting;
 
     public override void InstallBindings()
     {
@@ -32,11 +39,14 @@ public class GameInstaller : MonoInstaller
             .WithInitialSize(5)
             .FromComponentInNewPrefab(enemy)
             .UnderTransformGroup("Enemyes"));
+            
 
         Container.BindInterfacesAndSelfTo<InstallingUnitOnRoad>().AsSingle();
 
         Container.BindInterfacesAndSelfTo<EnemySpawn>().AsSingle();
         Container.BindInstance(enemySpawnSetting);
+
+        Container.BindInstance(shopSetting);
 
         Container.Bind<TrackFacade>().FromComponentsInHierarchy().AsSingle();
 

@@ -164,6 +164,8 @@ MonoBehaviour:
     IsRandom: 0
     TrackNumber: 0
     IsRunning: 1
+  shopSetting:
+    Prefab: {fileID: 4510831579609040901, guid: 063ddf1299386f1469cb3dadf97887dc, type: 3}
 --- !u!4 &106140279
 Transform:
   m_ObjectHideFlags: 0
