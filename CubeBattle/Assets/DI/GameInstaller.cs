@@ -12,6 +12,7 @@ using CubeBattle.UnitShop;
 using CubeBattle.Units.Datas;
 using CubeBattle.UnitShop.UI;
 using CubeBattle.BuyUnits;
+using CubeBattle.Units.View.Pool;
 
 public class GameInstaller : MonoInstaller
 {
@@ -52,5 +53,7 @@ public class GameInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<PlayerBaseHealth>().AsSingle();
         Container.BindInterfacesAndSelfTo<EnemyBaseHealth>().AsSingle();
+
+        Container.Bind<ViewModelPool>().AsSingle();
     }
 }

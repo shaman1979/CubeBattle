@@ -1,6 +1,7 @@
 ﻿using CubeBattle.MessageBus;
 using CubeBattle.Messages;
 using CubeBattle.Units;
+using CubeBattle.Units.Datas;
 using CubeBattle.Units.Factory;
 using UnityEngine;
 using Zenject;
@@ -24,21 +25,23 @@ namespace CubeBattle.Tracks
         {
             subscriber.Subscriber<WarriorPlaceOnTrackMessage>(message =>
             { 
-                WarriorPlace(message.TrackFacade, message.TrackFacade.GetWarriorSpawnPoint(), warriorFactory);
+                WarriorPlace(message.TrackFacade, message.TrackFacade.GetWarriorSpawnPoint(), warriorFactory, message.Data);
             });
 
             subscriber.Subscriber<EnemyPlaceOnTrackMessage>(message =>
             {
-                WarriorPlace(message.TrackFacade, message.TrackFacade.GetEnemySpawnPoint(), enemyFactory);
+                WarriorPlace(message.TrackFacade, message.TrackFacade.GetEnemySpawnPoint(), enemyFactory, message.Data);
             });
         }
 
-        private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<TrackFacade,T>  factory) where T : UnitFacade
+        private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<TrackFacade,T>  factory, UnitData data) where T : UnitFacade
         {
             var unit = factory.Create(trackFacade);
 
             trackFacade.AddUnit(unit);
+
             unit.transform.position = spawnPoint;
+            unit.Setup(data);
         }
     }
 }

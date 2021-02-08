@@ -1,5 +1,6 @@
 ﻿using CubeBattle.MessageBus;
 using CubeBattle.Tracks;
+using CubeBattle.Units.Datas;
 using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
@@ -37,6 +38,13 @@ namespace CubeBattle.Units
         public int GetPower()
         {
             return unitPower.GetPower();
+        }
+
+        public void Setup(UnitData data)
+        {
+            movening.SetSpeed(data.Speed);
+            view.ChangeModel(data.View);
+            unitPower.SetMass(data.Mass);
         }
 
         private void Awake()

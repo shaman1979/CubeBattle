@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using CubeBattle.Units.View;
 
 namespace CubeBattle.Units.Datas
 {
@@ -15,7 +16,7 @@ namespace CubeBattle.Units.Datas
         public float Mass { get; private set; }
 
         [SerializeField, TabGroup("View")]
-        public GameObject View { get; private set; }
+        public WarriorViewType View { get; private set; }
 
         [SerializeField, TabGroup("ShopOptions")]
         public GameObject Preview { get; private set; }

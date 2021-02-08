@@ -16,6 +16,11 @@ namespace CubeBattle.Units
             this.unitMovening = unitMovening;
         }
 
+        public void SetMass(float mass)
+        {
+            rigidbody.mass = mass;
+        }
+
         public int GetPower()
         {
             return Mathf.RoundToInt(rigidbody.mass * unitMovening.Speed);

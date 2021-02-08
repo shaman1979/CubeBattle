@@ -35,6 +35,11 @@ namespace CubeBattle.Units.Movening
             return unitRigidbody.velocity + (setting.Direction * speed);
         }
 
+        public void SetSpeed(float speed)
+        {
+            setting.Speed = speed;
+        }
+
         [System.Serializable]
         public class Setting
         {

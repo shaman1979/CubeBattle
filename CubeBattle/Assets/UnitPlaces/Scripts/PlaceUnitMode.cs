@@ -2,6 +2,7 @@
 using CubeBattle.MessageBus;
 using CubeBattle.Messages;
 using CubeBattle.Tracks;
+using CubeBattle.Units.Datas;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ namespace CubeBattle.BuyUnits
 
         private bool isRunning = false;
         private TrackFacade selectionTrack;
+
+        private UnitData selectionUnitData;
 
         public PlaceUnitMode(
             ISubscriber subscriber,
@@ -39,6 +42,7 @@ namespace CubeBattle.BuyUnits
                 switch (message.ModeWorker)
                 {
                     case ModeWorker.Run:
+                        selectionUnitData = message.PlaceUnitData;
                         Run();
                         break;
                     case ModeWorker.Stop:
@@ -69,7 +73,7 @@ namespace CubeBattle.BuyUnits
 
         private void Stop()
         {
-            Debug.Log($"Режим установки юнита остановлен.");
+            
             isRunning = false;
 
             cursorCollision.OnTrackEnter -= TrackSelection;
@@ -78,14 +82,19 @@ namespace CubeBattle.BuyUnits
             view.PreviewHide();
 
             if (selectionTrack == null)
+            {
+                Debug.Log($"Режим установки юнита остановлен.");
                 return;
+            }
 
             if (selectionTrack.HasWarriorPlace())
             {
-                publisher.Publish(new WarriorPlaceOnTrackMessage(selectionTrack));
+                publisher.Publish(new WarriorPlaceOnTrackMessage(selectionTrack, selectionUnitData));
             }
 
-            TrackRemoveSelection(selectionTrack);          
+            TrackRemoveSelection(selectionTrack);
+
+            Debug.Log($"Режим установки юнита завершен.");
         }
 
         private void TrackSelection(TrackFacade trackFacade)
