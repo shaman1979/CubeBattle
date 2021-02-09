@@ -45,6 +45,7 @@ namespace CubeBattle.Units.View
             currentModelView.gameObject.SetActive(true);
             currentModelView.transform.SetParent(setting.ParentTransform);
             currentModelView.transform.localPosition = Vector3.zero;
+            currentModelView.transform.localRotation = Quaternion.Euler(setting.Rotation);
         }
 
         [System.Serializable]
@@ -52,6 +53,7 @@ namespace CubeBattle.Units.View
         {
             public Color unitColor;
             public Transform ParentTransform;
+            public Vector3 Rotation;
         }
     }
 }

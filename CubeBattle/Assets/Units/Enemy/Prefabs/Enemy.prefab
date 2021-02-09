@@ -54,6 +54,7 @@ MonoBehaviour:
   viewSetting:
     unitColor: {r: 1, g: 0.02264148, b: 0.02264148, a: 1}
     ParentTransform: {fileID: 963211449618320656}
+    Rotation: {x: 0, y: 180, z: 0}
   rigidbody: {fileID: 7235055322720451508}
 --- !u!114 &5590461128588029883
 MonoBehaviour:
@@ -86,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
