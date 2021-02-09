@@ -24,7 +24,7 @@ namespace CubeBattle.Tracks
         public void Initialize()
         {
             subscriber.Subscriber<WarriorPlaceOnTrackMessage>(message =>
-            { 
+            {
                 WarriorPlace(message.TrackFacade, message.TrackFacade.GetWarriorSpawnPoint(), warriorFactory, message.Data);
             });
 
@@ -34,14 +34,13 @@ namespace CubeBattle.Tracks
             });
         }
 
-        private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<TrackFacade,T>  factory, UnitData data) where T : UnitFacade
+        private void WarriorPlace<T>(TrackFacade trackFacade, Vector3 spawnPoint, PlaceholderFactory<TrackFacade, T> factory, UnitData data) where T : UnitFacade
         {
             var unit = factory.Create(trackFacade);
-
-            trackFacade.AddUnit(unit);
-
-            unit.transform.position = spawnPoint;
             unit.Setup(data);
+            trackFacade.AddUnit(unit);
+            unit.transform.position = spawnPoint;
+
         }
     }
 }

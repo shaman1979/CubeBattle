@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7216039454688201639}
   - component: {fileID: 9056266197201411408}
-  m_Layer: 0
+  - component: {fileID: 2685466848605280415}
+  m_Layer: 8
   m_Name: WarriorShip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,6 +46,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+--- !u!65 &2685466848605280415
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4502049118159862410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.75268054, z: 1.2755643}
+  m_Center: {x: 0, y: 0.12365973, z: 0.13778216}
 --- !u!1001 &7029713382809062334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58,15 +72,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4701480513205521888, guid: c4a236b6d260fbd4f84544017d776832, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4701480513205521888, guid: c4a236b6d260fbd4f84544017d776832, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4701480513205521888, guid: c4a236b6d260fbd4f84544017d776832, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.08
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4701480513205521888, guid: c4a236b6d260fbd4f84544017d776832, type: 3}
       propertyPath: m_LocalPosition.x
