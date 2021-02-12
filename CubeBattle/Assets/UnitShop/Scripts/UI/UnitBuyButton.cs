@@ -15,6 +15,9 @@ namespace CubeBattle.UnitShop.UI
         [SerializeField]
         private UnitBuyButtonView view;
 
+        [SerializeField]
+        private UnitBuyButtonActivator activator;
+
         private IPublisher publisher = null;
 
         private UnitData currentData;
@@ -30,6 +33,7 @@ namespace CubeBattle.UnitShop.UI
         public void OnPointerUp(PointerEventData eventData)
         {
             publisher.Publish(new PlaceUnitMessage(BuyUnits.PlaceUnitMode.ModeWorker.Stop));
+            activator.ButtonRecharge();
         }
 
         public void OnPointerDown(PointerEventData eventData)

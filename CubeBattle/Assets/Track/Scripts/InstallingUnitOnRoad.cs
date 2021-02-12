@@ -40,7 +40,6 @@ namespace CubeBattle.Tracks
             unit.Setup(data);
             trackFacade.AddUnit(unit);
             unit.transform.position = spawnPoint;
-
         }
     }
 }
