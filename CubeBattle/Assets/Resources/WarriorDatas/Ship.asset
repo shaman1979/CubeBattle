@@ -13,26 +13,12 @@ MonoBehaviour:
   m_Name: Ship
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
+    SerializedFormat: 0
+    SerializedBytes: 1f0105000000530070006500650064000000803f1f01040000004d00610073007300000000401d0104000000560069006500770000000000000000002d010700000050007200650076006900650077000b0104000000490063006f006e0000000000
+    ReferencedUnityObjects:
+    - {fileID: 21300000, guid: 1ba46865361c71a4aa221b447d58eabd, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: Speed
-      Entry: 4
-      Data: 1
-    - Name: Mass
-      Entry: 4
-      Data: 2
-    - Name: View
-      Entry: 6
-      Data: 
-    - Name: Preview
-      Entry: 6
-      Data: 
-    - Name: icon
-      Entry: 6
-      Data: 
+    SerializationNodes: []
